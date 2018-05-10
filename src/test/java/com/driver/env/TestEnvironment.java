@@ -1,13 +1,12 @@
 package com.driver.env;
 
-import static org.testng.Assert.assertTrue;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.junit.Assert;
 
 public class TestEnvironment {
 
@@ -48,7 +47,7 @@ public class TestEnvironment {
                 // driver.get(baseURL);
             } catch (Exception ee) {
                 logger.error("Could not prepare test data: ", ee);
-                assertTrue(false);
+                Assert.assertTrue(false);
             }
 
         } else if (env.equals("remote")) {
@@ -57,7 +56,7 @@ public class TestEnvironment {
                 password = prop.getProperty("password");
             } catch (Exception ee) {
                 logger.error("Could not prepare test data: ", ee);
-                assertTrue(false);
+                Assert.assertTrue(false);
             }
         } else {
             logger.info("Provide valid environment parameter: local or remote");

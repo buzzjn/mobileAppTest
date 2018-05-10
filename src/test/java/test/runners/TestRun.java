@@ -1,6 +1,5 @@
 package test.runners;
 
-import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 
 import cucumber.api.CucumberOptions;

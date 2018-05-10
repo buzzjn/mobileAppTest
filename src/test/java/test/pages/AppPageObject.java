@@ -21,18 +21,14 @@ public class AppPageObject {
         final long startTimeInMillis = System.currentTimeMillis();
         boolean hasTimedOut = false;
         while (inProgress() && !hasTimedOut) {
-            try {
-                iosDriver.wait(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
             hasTimedOut = System.currentTimeMillis() - startTimeInMillis >= (DEFAULT_TIMEOUT_IN_SECONDS * 1000);
         }
     }
 
     private boolean inProgress() {
         try {
-            iosDriver.findElement(By.id("Hello!"));
+            iosDriver.findElementByIosUIAutomation("Hello!");
             return true;
         } catch (Exception e) {
             return false;

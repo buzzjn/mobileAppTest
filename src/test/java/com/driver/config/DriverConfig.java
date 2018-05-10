@@ -1,14 +1,16 @@
 package com.driver.config;
 
-import com.driver.env.TestEnvironment;
-import com.google.inject.Inject;
-import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.remote.MobileCapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import com.driver.env.TestEnvironment;
+import com.google.inject.Inject;
+
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
 
 public class DriverConfig {
     private final TestEnvironment environment;
@@ -21,8 +23,8 @@ public class DriverConfig {
     public IOSDriver getIosDriver() {
         URL localUrl = null;
 
-        final File iosAppDir = new File(environment.getPathFiles()+"");
-        final File iosApp = new File(iosAppDir, "Hive.app");
+        final File iosAppDir = new File(environment.getPathFiles() + "");
+        final File iosApp = new File(iosAppDir, "Calendar.app");
 
         try {
             localUrl = new URL(environment.getBaseURL());
@@ -33,9 +35,8 @@ public class DriverConfig {
         final DesiredCapabilities capabilities = new DesiredCapabilities();
 
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 8");
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "8.4");
-        // capabilities.setCapability(MobileCapabilityType.APP_WAIT_ACTIVITY, "true");
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 7");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11.3");
         capabilities.setCapability(MobileCapabilityType.APP, iosApp);
         capabilities.setCapability("waitForAppScript", "true");
         return new IOSDriver(localUrl, capabilities);
